@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View } from 'react-native';
 import Icon from '@expo/vector-icons/Feather';
 
-import colors from '../styles/colors';
-import fonts from '../styles/fonts';
+import colors from '../../styles/colors';
+import fonts from '../../styles/fonts';
 
 export default function CardMusic() {
   return(

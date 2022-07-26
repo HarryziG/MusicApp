@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-import colors from '../styles/colors';
-import fonts from '../styles/fonts';
+import colors from '../../styles/colors';
+import fonts from '../../styles/fonts';
 
-import CardMusic from './CardMusic';
+import CardMusic from '../CardMusic/index.js';
 
 export function SongList() {
   return (

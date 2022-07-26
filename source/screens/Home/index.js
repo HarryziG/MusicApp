@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { StyleSheet, Text, View, Dimensions, TouchableOpacity, ScrollView, SafeAreaView} from 'react-native';
 import Icon from '@expo/vector-icons/Ionicons';
 
-import {SongList} from '../../components/SongList';
-import {AlbumList} from '../../components/AlbumsList';
+import {SongList} from '../../components/SongList/index';
+import {AlbumList} from '../../components/AlbumList/index';
 
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
