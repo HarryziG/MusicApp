@@ -31,7 +31,7 @@ Esse projeto foi desenvolvido utilizando como principal linguagem o **Javascript
 ## Etapas desenvolvidas:
 - [x] Tela "Home"
 - [x] Player
-- [] Tela "Procura"
+- [x] Tela "Pesquisa"
 - [] Tela "Configurações"
 
 <br/>
