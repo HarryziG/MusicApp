@@ -32,7 +32,7 @@ Esse projeto foi desenvolvido utilizando como principal linguagem o **Javascript
 - [x] Tela "Home"
 - [x] Player
 - [x] Tela "Pesquisa"
-- [] Tela "Configurações"
+- [x] Tela "Configurações"
 
 <br/>
 
