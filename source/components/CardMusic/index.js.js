@@ -1,12 +1,15 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import Icon from '@expo/vector-icons/Feather';
 
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
 
-export default function CardMusic() {
+export default function CardMusic({navigation}) {
   return(
-    <View style={styles.container}>
+    <TouchableOpacity 
+      style={styles.container}
+      onPress={() => {navigation.navigate("Player")}}
+    >
       <View style={styles.image} />
 
       <View style={styles.description}>
@@ -14,7 +17,7 @@ export default function CardMusic() {
         <Text style={styles.author}>Zain Bergson</Text>
       </View>
       <Icon name="more-horizontal" size={15} color={colors.gray}  />
-    </View>
+    </TouchableOpacity>
   );
 }
 

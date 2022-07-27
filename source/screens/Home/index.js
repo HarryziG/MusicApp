@@ -22,7 +22,9 @@ export function Home({ navigation }) {
 					<Icon name={"play"} size={25} color={colors.white}/>
 				</TouchableOpacity>
 			
-			<SongList />
+			<SongList 
+				navigation = {navigation}
+			/>
 
 			<AlbumList />
 		</ScrollView>
