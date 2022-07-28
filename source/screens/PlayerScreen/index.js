@@ -3,12 +3,14 @@ import { StyleSheet, Text, View, TouchableOpacity, Image, Dimensions } from 'rea
 import { Audio } from 'expo-av';
 import { LinearGradient } from 'expo-linear-gradient';
 
-import imgMusic from '../../assets/emptyMusicValue.jpeg'
+import Icon from '@expo/vector-icons/Feather';
 
 const screenWidth = Dimensions.get('window').width
 
 import { soundsData } from '../../data/sounds'
 import { MusicSlider } from '../../components/MusicSlider';
+
+import colors from '../../styles/colors';
 
 export function PlayerScreen() {
 
@@ -92,31 +94,37 @@ export function PlayerScreen() {
 
 			<View style={styles.menuPlayer}>
 				<TouchableOpacity onPress={() => { handleChangeActualSound('-') }}>
-					<Text style={styles.baseText} >Anterior</Text>
+					<Icon name={"skip-back"} size={25} color={colors.white} />
 				</TouchableOpacity>
 
 				{soundPlayingNow ? <TouchableOpacity onPress={pauseSound}>
-						<Text style={styles.baseText} >Pausar</Text>
+						<Icon name={"pause"} size={25} color={colors.white}/>
 					</TouchableOpacity> 
 					: <TouchableOpacity onPress={() => playSound()}>
-						<Text style={styles.baseText} >Iniciar</Text>
+					<Icon name={"play"} size={25} color={colors.white}/>
 					</TouchableOpacity>
 				}
 
 				<TouchableOpacity onPress={() => { handleChangeActualSound('+') }}>
-					<Text style={styles.baseText} >Próxima</Text>
+				<Icon name={"skip-forward"} size={25} color={colors.white} />
 				</TouchableOpacity>
 			</View>
-      	</LinearGradient>
+    </LinearGradient>
 	);
 }
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1, padding: 40, alignItems: 'center', justifyContent: 'space-around'
+		flex: 1, 
+		padding: 40, 
+		alignItems: 'center', 
+		justifyContent: 'space-around',
 	},
 	menuPlayer: {
-		width: '100%', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center'
+		width: '100%', 
+		flexDirection: 'row', 
+		justifyContent: 'space-around', 
+		alignItems: 'center'
 	},
 	baseText: {
 		color: 'white',
