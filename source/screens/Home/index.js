@@ -8,15 +8,14 @@ import {AlbumList} from '../../components/AlbumList/';
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
 
-export function Home({ navigation }) {
+export function Home({ navigation, homeSounds, albums }) {
 
-	
 	return (
 
 		<SafeAreaView style={styles.container}>
 		<ScrollView style={styles.scrollView} contentContainerStyle={styles.contentContainer}>
 				<View style={styles.header}>
-					<Text style={styles.title}>Zain Bergson</Text>
+					<Text style={styles.title}>{homeSounds[0].author}</Text>
 				</View>
 				<TouchableOpacity style={styles.playButton}>
 					<Icon name={"play"} size={25} color={colors.white}/>
@@ -24,9 +23,12 @@ export function Home({ navigation }) {
 			
 			<SongList 
 				navigation = {navigation}
+				sounds = {homeSounds}
 			/>
 
-			<AlbumList />
+			<AlbumList
+				albums={albums}
+			/>
 		</ScrollView>
 	</SafeAreaView>
 	);
@@ -51,18 +53,19 @@ const styles = StyleSheet.create({
 	header: {
 		width: Dimensions.get('screen').width,
 		height: 255,
-		
+		paddingLeft:30,
+		paddingRight: 90,
 		backgroundColor: colors.gray,
 
 		justifyContent: 'flex-end'
+		
 	},
 
 	title: {
 		color: colors.white,
-		marginLeft: 30,
 		marginBottom: 12,
 		fontSize: 24,
-		fontFamily: fonts.title
+		fontFamily: fonts.title,
 	},
 
 	playButton: {

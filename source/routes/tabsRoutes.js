@@ -9,7 +9,8 @@ import { Home } from '../screens/Home';
 
 const Tabs = createBottomTabNavigator();
 
-const TabsRoutes = () => {
+const TabsRoutes = ({homeSounds, albums}) => {
+  
   return (
     <Tabs.Navigator
       tabBarOptions={{
@@ -29,7 +30,14 @@ const TabsRoutes = () => {
     >
       <Tabs.Screen
         name="Home"
-        component={Home}
+        component={function RenderHome() {
+          return( 
+            <Home 
+              homeSounds={homeSounds}
+              albums={albums}
+            />
+          )
+        }}
         options= {{
             tabBarIcon: ({color}) => (
               <Icon name="home" color={color} size={23} />

@@ -5,28 +5,13 @@ import { CardAlbum } from '../CardAlbum/';
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
 
-export function AlbumList() {
-
-  const data = [
-    {
-      id: 1,
-      title: 'Album 1'
-    },
-    {
-      id: 2,
-      title: 'Album 2'
-    },
-    {
-      id: 3,
-      title: 'Album 3'
-    },
-  ]
+export function AlbumList({albums}) {
 
   return (
     <View style={styles.content}>
       <Text style={styles.title}>Albums</Text>
       <FlatList 
-        data={data}
+        data={albums}
         renderItem={CardAlbum}
         keyExtractor={item => item.id}
         horizontal={true}

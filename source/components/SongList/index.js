@@ -5,13 +5,18 @@ import fonts from '../../styles/fonts';
 
 import CardMusic from '../CardMusic/index.js';
 
-export function SongList({ navigation}) {
+export function SongList({ navigation, sounds}) {
   return (
     <View style={styles.content}>
       <Text style={styles.title}>Songs</Text>
-      <CardMusic navigation = {navigation} />
-      <CardMusic navigation = {navigation} />
-      <CardMusic navigation = {navigation} />
+      {sounds.map((item) => (
+        <CardMusic 
+          navigation = {navigation} 
+          key={item.id} 
+          sound={item}
+        />
+      ))}
+
       
     </View>
   );

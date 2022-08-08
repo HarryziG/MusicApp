@@ -1,14 +1,20 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
 
 export function CardAlbum({item}) {
-  
+
+  console.log("aaaa");
+  console.log(item);
+
   return(
     <View style={styles.container}>
-      <View style={styles.albumImg} />
-      <Text style={styles.title}>{item.title}</Text>
+      <Image 
+        source={{uri: `${item.image}`}} 
+        style={styles.albumImg}   
+      />
+      <Text style={styles.title}>{item.album}</Text>
     </View>
   )
 }
@@ -23,7 +29,8 @@ const styles = StyleSheet.create({
     width: 134,
     height: 134,
     backgroundColor: colors.gray,
-    borderRadius: 12.37
+    borderRadius: 12.37,
+    resizeMode: 'contain'
   },
 
   title: {
