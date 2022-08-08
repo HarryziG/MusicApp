@@ -5,7 +5,7 @@ import colors from '../../styles/colors';
 import Header from '../../components/Header';
 import { SongList } from '../../components/SongList';
 
-export function Search({navigation}) {
+export function Search({navigation, sounds}) {
 
     return (
       <ScrollView 
@@ -13,8 +13,8 @@ export function Search({navigation}) {
         
       >
         <Header title="Pesquisa" />
-        <SongList/>
-        <SongList/>
+        <SongList sounds={sounds} />
+        <SongList sounds={sounds} />
 
       </ScrollView>
     );

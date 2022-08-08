@@ -9,7 +9,7 @@ import { Home } from '../screens/Home';
 
 const Tabs = createBottomTabNavigator();
 
-const TabsRoutes = ({homeSounds, albums}) => {
+const TabsRoutes = ({homeSounds, albums, sounds}) => {
   
   return (
     <Tabs.Navigator
@@ -47,8 +47,12 @@ const TabsRoutes = ({homeSounds, albums}) => {
 
       <Tabs.Screen
         name="Search"
-        component={function RenderSearch(props) {
-          return <Search {...props} />
+        component={function RenderSearch() {
+          return (
+            <Search 
+              sounds={sounds}
+            />
+          )
         }}
         options= {{
             tabBarIcon: ({color}) => (
@@ -59,8 +63,10 @@ const TabsRoutes = ({homeSounds, albums}) => {
 
       <Tabs.Screen
         name="Profile"
-        component={function RenderProfile(props) {
-          return <Profile {...props} />
+        component={function RenderProfile() {
+          return (
+            <Profile />
+          )
         }}
         options= {{
             tabBarIcon: ({color}) => (

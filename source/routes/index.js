@@ -25,7 +25,6 @@ const Routes = () => {
       });
     }
   })
-  console.log(albums);
   
   return(
     <NavigationContainer>
@@ -37,6 +36,7 @@ const Routes = () => {
             <TabsRoutes 
               homeSounds={homeSounds}
               albums={albums}
+              sounds={soundsData}
             />
           )}}
         options={{headerShown: false}}
