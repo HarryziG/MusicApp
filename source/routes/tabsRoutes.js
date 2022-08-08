@@ -10,7 +10,6 @@ import { Home } from '../screens/Home';
 const Tabs = createBottomTabNavigator();
 
 const TabsRoutes = ({homeSounds, albums, sounds}) => {
-  
   return (
     <Tabs.Navigator
       tabBarOptions={{

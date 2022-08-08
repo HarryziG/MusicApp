@@ -5,10 +5,15 @@ import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
 
 export default function CardMusic({navigation, sound}) {
+
+  
+
   return(
     <TouchableOpacity 
       style={styles.container}
-      onPress={() => {navigation.navigate("Player")}}
+      onPress={() => {navigation.navigate("Player", {
+        selectedSound: sound
+      })}}
     >
       <Image 
         style={styles.image} 

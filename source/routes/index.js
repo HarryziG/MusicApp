@@ -2,6 +2,7 @@ import {useState} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+
 import { PlayerScreen } from '../screens/PlayerScreen';
 
 import {soundsData} from '../data/sounds';
@@ -12,6 +13,7 @@ const Stack = createStackNavigator();
 import TabsRoutes from './tabsRoutes';
 
 const Routes = () => { 
+
   const homeSounds = soundsData.slice(0,3);
   let album = "";
   const albums = []; 
@@ -25,6 +27,8 @@ const Routes = () => {
       });
     }
   })
+
+
   
   return(
     <NavigationContainer>

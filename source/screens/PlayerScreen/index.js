@@ -12,9 +12,11 @@ import { MusicSlider } from '../../components/MusicSlider';
 
 import colors from '../../styles/colors';
 
-export function PlayerScreen(props) {
+export function PlayerScreen({route}) {
+	const {selectedSound} = route.params;
+	
 	const [sound, setSound] = useState();
-	const [actualSoundData, setActualSoundData] = useState(soundsData[0])
+	const [actualSoundData, setActualSoundData] = useState(selectedSound)
 
 	const [soundPlayingNow, setSoundPlayingNow] = useState(false)
 

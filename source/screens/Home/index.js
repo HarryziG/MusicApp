@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { StyleSheet, Text, View, Dimensions, TouchableOpacity, ScrollView, SafeAreaView} from 'react-native';
 import Icon from '@expo/vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/core';
 
 import {SongList} from '../../components/SongList/';
 import {AlbumList} from '../../components/AlbumList/';
@@ -8,8 +9,8 @@ import {AlbumList} from '../../components/AlbumList/';
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
 
-export function Home({ navigation, homeSounds, albums }) {
-
+export function Home({homeSounds, albums }) {
+	const navigation = useNavigation();
 	return (
 
 		<SafeAreaView style={styles.container}>
