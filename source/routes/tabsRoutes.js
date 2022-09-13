@@ -1,4 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {memo} from 'react';
 
 import Icon from '@expo/vector-icons/Feather';
 import fonts from '../styles/fonts';
@@ -9,7 +10,7 @@ import { Home } from '../screens/Home';
 
 const Tabs = createBottomTabNavigator();
 
-const TabsRoutes = ({homeSounds, albums, sounds}) => {
+const TabsRoutes = ({homeSounds, albums, sounds, globalSound}) => {
   return (
     <Tabs.Navigator
       tabBarOptions={{
@@ -20,7 +21,7 @@ const TabsRoutes = ({homeSounds, albums, sounds}) => {
           shadowRadius: 6,
           borderTopEndRadius: 18,
           borderTopStartRadius: 18
-          
+
         },
         labelStyle: {
           fontFamily: fonts.subtitle
@@ -29,30 +30,30 @@ const TabsRoutes = ({homeSounds, albums, sounds}) => {
     >
       <Tabs.Screen
         name="Home"
-        component={function RenderHome() {
-          return( 
-            <Home 
-              homeSounds={homeSounds}
-              albums={albums}
-            />
-          )
-        }}
+        component={memo((props) =>
+          <Home
+            {...props}
+            homeSounds={homeSounds}
+            albums={albums}
+            globalSound={globalSound}
+          />
+        )}
         options= {{
             tabBarIcon: ({color}) => (
               <Icon name="home" color={color} size={23} />
-            ),							
+            ),
         }}
       />
 
       <Tabs.Screen
         name="Search"
-        component={function RenderSearch() {
-          return (
-            <Search 
-              sounds={sounds}
-            />
-          )
-        }}
+        component={memo((props) =>
+          <Search
+            {...props}
+            sounds={sounds}
+            globalSound={globalSound}
+          />
+        )}
         options= {{
             tabBarIcon: ({color}) => (
               <Icon name="search" color={color} size={23} />
@@ -62,15 +63,11 @@ const TabsRoutes = ({homeSounds, albums, sounds}) => {
 
       <Tabs.Screen
         name="Profile"
-        component={function RenderProfile() {
-          return (
-            <Profile />
-          )
-        }}
+        component={memo((props) => <Profile {...props} globalSound={globalSound}/>)}
         options= {{
             tabBarIcon: ({color}) => (
               <Icon name="user" color={color} size={23} />
-            ) 
+            )
         }}
       />
     </Tabs.Navigator>

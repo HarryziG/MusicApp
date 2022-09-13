@@ -1,3 +1,4 @@
+import {memo} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -32,30 +33,22 @@ const Routes = () => {
     <Stack.Navigator>
       <Stack.Screen
         name="Home"
-        component={function RenderTabs() {
-          return (
-            <TabsRoutes
-              homeSounds={homeSounds}
-              albums={albums}
-              sounds={soundsData}
-            />
-          )}}
+        component={memo((props) =>
+          <TabsRoutes
+            {...props}
+            homeSounds={homeSounds}
+            albums={albums}
+            sounds={soundsData}
+            globalSound={globalSound}
+          />
+        )}
         options={{headerShown: false}}
       />
 
       <Stack.Screen
         name="Player"
         options={{headerShown: false}}
-        component={
-          function RenderFontConfigurations(props) {
-            return (
-              <PlayerScreen
-                {...props}
-                globalSound={globalSound}
-              />
-            )
-          }
-        }
+        component={memo((props) => <PlayerScreen {...props} globalSound={globalSound}/>)}
       />
     </Stack.Navigator>
 		</NavigationContainer>
