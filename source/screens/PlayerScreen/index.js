@@ -12,63 +12,17 @@ import { MusicSlider } from '../../components/MusicSlider';
 
 import colors from '../../styles/colors';
 
-export function PlayerScreen({route}) {
-	const {selectedSound} = route.params;
-	
-	const [sound, setSound] = useState();
-	const [actualSoundData, setActualSoundData] = useState(selectedSound)
+export function PlayerScreen({route, globalSound}) {
 
-	const [soundPlayingNow, setSoundPlayingNow] = useState(false)
-
-
-	async function playSound(_newSoundToPlay) {
-
-		const newSoundToPlay = _newSoundToPlay ? _newSoundToPlay : actualSoundData
-
-		const { sound: _sound, status } = await Audio.Sound.createAsync({ uri: newSoundToPlay.uri });
-
-		setSound(_sound);
-		setActualSoundData({...newSoundToPlay, details: status})
-
-		await _sound.playAsync();
-		setSoundPlayingNow(true)
-	}
-
-
-	function handleChangeActualSound(changeType) {
-
-		const actualSoundIndex = soundsData.findIndex(sounds => sounds.id === actualSoundData.id ? true : false)
-
-		if (changeType === '-') {
-			const newSoundDataIndex = actualSoundIndex > 0 ? actualSoundIndex - 1 : 0
-			playSound(soundsData[newSoundDataIndex])
-
-			return
-		}
-
-		if (changeType === '+') {
-			const newSoundDataIndex = actualSoundIndex < soundsData.length - 1 ? actualSoundIndex + 1 : soundsData.length - 1
-			playSound(soundsData[newSoundDataIndex])
-
-			return
-		}
-	}
-
-
-	function pauseSound() {
-		sound.pauseAsync()
-		setSoundPlayingNow(false)
-	}
-
-
-	useEffect(() => {
-		return sound
-			? () => {
-				sound.unloadAsync();
-			}
-			: undefined;
-	}, [sound]);
-
+	const {
+		sound,
+		actualSoundData,
+		soundPlayingNow,
+		soundsData,
+		playSound,
+		handleChangeActualSound,
+		pauseSound
+	} = globalSound
 
 	return (
 		<LinearGradient
@@ -100,7 +54,7 @@ export function PlayerScreen({route}) {
 
 				{soundPlayingNow ? <TouchableOpacity onPress={pauseSound}>
 						<Icon name={"pause"} size={25} color={colors.white}/>
-					</TouchableOpacity> 
+					</TouchableOpacity>
 					: <TouchableOpacity onPress={() => playSound()}>
 					<Icon name={"play"} size={25} color={colors.white}/>
 					</TouchableOpacity>
@@ -116,15 +70,15 @@ export function PlayerScreen({route}) {
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1, 
-		padding: 40, 
-		alignItems: 'center', 
+		flex: 1,
+		padding: 40,
+		alignItems: 'center',
 		justifyContent: 'space-around',
 	},
 	menuPlayer: {
-		width: '100%', 
-		flexDirection: 'row', 
-		justifyContent: 'space-around', 
+		width: '100%',
+		flexDirection: 'row',
+		justifyContent: 'space-around',
 		alignItems: 'center'
 	},
 	baseText: {
