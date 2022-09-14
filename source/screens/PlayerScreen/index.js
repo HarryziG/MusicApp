@@ -18,10 +18,10 @@ export function PlayerScreen({route, globalSound}) {
 		sound,
 		actualSoundData,
 		soundPlayingNow,
-		soundsData,
 		playSound,
 		handleChangeActualSound,
-		pauseSound
+		pauseSound,
+		endAlert
 	} = globalSound
 
 	return (
@@ -44,6 +44,7 @@ export function PlayerScreen({route, globalSound}) {
 				<MusicSlider
 					soundDuration={actualSoundData?.details?.durationMillis}
 					sound={sound}
+					endAlert={endAlert}
 				/>
 			</View>
 

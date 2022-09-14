@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
+import { Vibration } from 'react-native';
 import Slider from '@react-native-community/slider';
 
 
-export function MusicSlider({soundDuration, sound}) {
+export function MusicSlider({soundDuration, sound, endAlert}) {
 
   const [actualValueSound, setActualValueSound] = useState(0)
 
@@ -11,6 +12,9 @@ export function MusicSlider({soundDuration, sound}) {
     sound.setOnPlaybackStatusUpdate((data) => {
       setActualValueSound(data.positionMillis)
     })
+  if(soundDuration === actualValueSound && endAlert) {
+    Vibration.vibrate(1*500);
+  }
   }
 }, [sound]);
 

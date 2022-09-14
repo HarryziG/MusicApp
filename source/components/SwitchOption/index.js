@@ -33,7 +33,7 @@ export default function SwitchOption({title, description,showBanner, setShowBann
           thumbColor={endAlert ? colors.blue : colors.white}
           trackColor={{false: colors.grayTransp}}
           onValueChange={toggleEndAlert}
-          value={setEndAlert}
+          value={endAlert}
         />
       }
     </View>

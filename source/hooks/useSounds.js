@@ -9,6 +9,7 @@ export function useSound(soundsData) {
 	const [volume,setVolume] = useState(0.5);
 	const [soundPlayingNow, setSoundPlayingNow] = useState(false);
 	const [showBanner, setShowBanner] = useState(false);
+	const [endAlert, setEndAlert] = useState(false);
 
 	const playSound = useCallback(async (_newSoundToPlay) => {
 		const newSoundToPlay = _newSoundToPlay ? _newSoundToPlay : actualSoundData
@@ -70,6 +71,8 @@ export function useSound(soundsData) {
 			changeVolume,
 			volume,
 			showBanner,
-			setShowBanner
+			setShowBanner,
+			endAlert,
+			setEndAlert
     }
 }

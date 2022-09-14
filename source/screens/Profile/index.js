@@ -10,7 +10,14 @@ import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
 
 export function Profile({globalSound}) {
-	const {changeVolume, volume, showBanner, setShowBanner} = globalSound;
+	const {
+		changeVolume,
+		volume,
+		showBanner,
+		setShowBanner,
+		endAlert,
+		setEndAlert
+	} = globalSound;
 
 	return (
 		<ScrollView
@@ -71,6 +78,8 @@ export function Profile({globalSound}) {
 					<SwitchOption
 						title={"Vibrar ao terminar música"}
 						description={"Emite uma pequena vibração ao terminar uma música ou podcast"}
+						endAlert={endAlert}
+						setEndAlert={setEndAlert}
 					/>
 				</View>
 			</View>
