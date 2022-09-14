@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Button } from 'react-native';
 
 import Header from '../../components/Header';
@@ -9,11 +9,13 @@ import VolumeButton from '../../components/VolumeButton';
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
 
-export function Profile({ navigation }) {
+export function Profile({globalSound}) {
+	const {changeVolume, volume} = globalSound;
+
 	return (
-		<ScrollView 
+		<ScrollView
 			style={styles.background}
-			contentContainerStyle= {{paddingBottom: 50}}	
+			contentContainerStyle= {{paddingBottom: 50}}
 		>
 			<Header title={"Configurações"}/>
 
@@ -21,15 +23,15 @@ export function Profile({ navigation }) {
 				<Text style={styles.title}>Conta</Text>
 
 				<View style={styles.dataContainer}>
-					<Info  
+					<Info
 						title={"Usuário"}
 						description={"@viniciusLatini"}
 					/>
-					<Info  
+					<Info
 						title={"E-mail"}
 						description={"viniciuslatini2001@gmail.com"}
 					/>
-					<Info  
+					<Info
 						title={"Plano"}
 						description={"Premium live music"}
 					/>
@@ -40,13 +42,34 @@ export function Profile({ navigation }) {
 				<View style={styles.volumeContent}>
 					<Text style={styles.subTitle}>Volume geral</Text>
 					<View style={styles.buttonsContainer}>
-						<VolumeButton text="Baixo"/>
-						<VolumeButton text="Médio"/>
-						<VolumeButton text="Alto"/>  
+						<VolumeButton
+							value={0.3}
+							changeVolume={changeVolume}
+							text="Baixo"
+							active={volume === 0.3}
+						/>
+						<VolumeButton
+							value={0.5}
+							changeVolume={changeVolume}
+							text="Médio"
+							active={volume === 0.5}
+						/>
+						<VolumeButton
+							value={1}
+							changeVolume={changeVolume}
+							text="Alto"
+							active={volume === 1}
+						/>
 					</View>
 
-					<SwitchOption/>
-					<SwitchOption/>
+					<SwitchOption
+						title={"Mostrar música na primeira tela"}
+						description={"Mostra a música atual em formato de banner na primeira tela."}
+					/>
+					<SwitchOption
+						title={"Vibrar ao terminar música"}
+						description={"Emite uma pequena vibração ao terminar uma música ou podcast"}
+					/>
 				</View>
 			</View>
 		</ScrollView>
@@ -57,7 +80,7 @@ const styles = StyleSheet.create({
 	background: {
 		flex: 1,
 		backgroundColor: colors.black,
-	}, 
+	},
 	content: {
 		flex: 1,
 		paddingHorizontal: 29

@@ -1,10 +1,17 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { Text, TouchableOpacity, StyleSheet } from 'react-native'
 import colors from '../../styles/colors'
 import fonts from '../../styles/fonts'
 
-export default function VolumeButton({text}) {
+export default function VolumeButton({text, changeVolume, value, active}) {
+
   return (
-    <TouchableOpacity style={styles.button}>
+    <TouchableOpacity
+      onPress={() => {
+        changeVolume(value);
+      }}
+      style={active ? {...styles.button, backgroundColor: colors.blue}
+      : {...styles.button, backgroundColor: colors.grayTransp}}
+    >
       <Text style={styles.text}>{text}</Text>
     </TouchableOpacity>
   )
@@ -12,13 +19,11 @@ export default function VolumeButton({text}) {
 
 const styles = StyleSheet.create({
   button: {
-    width: 49.49,
-    height: 19,
+    width: 56,
+    height: 25,
     borderRadius: 5,
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.grayTransp,
-    
+    justifyContent: 'center'
   },
   text: {
     color: colors.white,

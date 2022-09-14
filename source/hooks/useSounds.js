@@ -1,4 +1,4 @@
-import { Audio } from 'expo-av';
+import {Audio} from 'expo-av';
 import { useEffect, useState, useCallback } from 'react';
 
 
@@ -6,6 +6,7 @@ export function useSound(soundsData) {
 
   const [sound, setSound] = useState();
 	const [actualSoundData, setActualSoundData] = useState(soundsData[0])
+	const [volume,setVolume] = useState(0.5);
 
 	const [soundPlayingNow, setSoundPlayingNow] = useState(false)
 
@@ -22,6 +23,10 @@ export function useSound(soundsData) {
 		setSoundPlayingNow(true)
 	}, [actualSoundData])
 
+	const changeVolume = useCallback(async(selectedVolume) => {
+		await sound.setVolumeAsync(selectedVolume);
+		setVolume(selectedVolume);
+	})
 
 	const handleChangeActualSound = useCallback((changeType) => {
 		const actualSoundIndex = soundsData.findIndex(sounds => sounds.id === actualSoundData.id ? true : false)
@@ -56,6 +61,14 @@ export function useSound(soundsData) {
 	}, [sound]);
 
     return {
-        sound, actualSoundData, soundPlayingNow, soundsData, playSound, handleChangeActualSound, pauseSound
+			sound,
+			actualSoundData,
+			soundPlayingNow,
+			soundsData,
+			playSound,
+			handleChangeActualSound,
+			pauseSound,
+			changeVolume,
+			volume
     }
 }

@@ -5,14 +5,11 @@ import fonts from '../../styles/fonts';
 
 export function CardAlbum({item}) {
 
-  console.log("aaaa");
-  console.log(item);
-
   return(
     <View style={styles.container}>
-      <Image 
-        source={{uri: `${item.image}`}} 
-        style={styles.albumImg}   
+      <Image
+        source={{uri: `${item.image}`}}
+        style={styles.albumImg}
       />
       <Text style={styles.title}>{item.album}</Text>
     </View>
