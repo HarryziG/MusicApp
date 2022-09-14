@@ -5,11 +5,10 @@ import { useEffect, useState, useCallback } from 'react';
 export function useSound(soundsData) {
 
   const [sound, setSound] = useState();
-	const [actualSoundData, setActualSoundData] = useState(soundsData[0])
+	const [actualSoundData, setActualSoundData] = useState(soundsData[0]);
 	const [volume,setVolume] = useState(0.5);
-
-	const [soundPlayingNow, setSoundPlayingNow] = useState(false)
-
+	const [soundPlayingNow, setSoundPlayingNow] = useState(false);
+	const [showBanner, setShowBanner] = useState(false);
 
 	const playSound = useCallback(async (_newSoundToPlay) => {
 		const newSoundToPlay = _newSoundToPlay ? _newSoundToPlay : actualSoundData
@@ -69,6 +68,8 @@ export function useSound(soundsData) {
 			handleChangeActualSound,
 			pauseSound,
 			changeVolume,
-			volume
+			volume,
+			showBanner,
+			setShowBanner
     }
 }

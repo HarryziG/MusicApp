@@ -10,7 +10,7 @@ import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
 
 export function Profile({globalSound}) {
-	const {changeVolume, volume} = globalSound;
+	const {changeVolume, volume, showBanner, setShowBanner} = globalSound;
 
 	return (
 		<ScrollView
@@ -65,6 +65,8 @@ export function Profile({globalSound}) {
 					<SwitchOption
 						title={"Mostrar música na primeira tela"}
 						description={"Mostra a música atual em formato de banner na primeira tela."}
+						showBanner={showBanner}
+						setShowBanner={setShowBanner}
 					/>
 					<SwitchOption
 						title={"Vibrar ao terminar música"}

@@ -3,24 +3,39 @@ import React, { useState } from 'react'
 import fonts from '../../styles/fonts'
 import colors from '../../styles/colors'
 
-export default function SwitchOption() {
-  const [isEnabled,setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(!isEnabled);
+export default function SwitchOption({title, description,showBanner, setShowBanner, endAlert, setEndAlert}) {
+
+  function toggleBanner() {
+    setShowBanner(!showBanner);
+  }
+
+  function toggleEndAlert() {
+    setEndAlert(!endAlert);
+  }
 
   return (
     <View style={styles.content}>
       <View style={styles.textContent}>
-        <Text style={styles.subTitle}>Mostrar música na primeira tela</Text>
+        <Text style={styles.subTitle}>{title}</Text>
         <Text style={styles.description}>
-          Mostra a música atual em formato de banner na primeira tela.
+          {description}
         </Text>
       </View>
-      <Switch 
-        thumbColor={isEnabled ? colors.blue : colors.white}
-        trackColor={{false: colors.grayTransp}}
-        onValueChange={toggleSwitch}
-        value={isEnabled}
-      />
+      {showBanner != undefined ?
+        <Switch
+          thumbColor={showBanner ? colors.blue : colors.white}
+          trackColor={{false: colors.grayTransp}}
+          onValueChange={toggleBanner}
+          value={showBanner}
+        />
+        :
+        <Switch
+          thumbColor={endAlert ? colors.blue : colors.white}
+          trackColor={{false: colors.grayTransp}}
+          onValueChange={toggleEndAlert}
+          value={setEndAlert}
+        />
+      }
     </View>
   )
 }
@@ -33,7 +48,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   textContent: {
-    width: 250
+    width: 240
   },
   subTitle: {
     fontFamily: fonts.subtitle,

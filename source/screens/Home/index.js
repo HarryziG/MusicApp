@@ -11,14 +11,16 @@ import fonts from '../../styles/fonts';
 
 export function Home({homeSounds, albums, globalSound}) {
 	const navigation = useNavigation();
-	const {soundPlayingNow, pauseSound, playSound} = globalSound;
+	const {soundPlayingNow, pauseSound, playSound, showBanner, actualSoundData} = globalSound;
 
 	return (
 
 		<SafeAreaView style={styles.container}>
 		<ScrollView style={styles.scrollView} contentContainerStyle={styles.contentContainer}>
 				<View style={styles.header}>
-					<Text style={styles.title}>{homeSounds[0].author}</Text>
+					<Text style={styles.title}>{
+						showBanner && soundPlayingNow ? actualSoundData.title : homeSounds[0].author
+					}</Text>
 				</View>
 				{soundPlayingNow ?
 					<TouchableOpacity style={styles.playButton} onPress={pauseSound}>
