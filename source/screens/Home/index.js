@@ -9,8 +9,10 @@ import {AlbumList} from '../../components/AlbumList/';
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
 
-export function Home({homeSounds, albums }) {
+export function Home({homeSounds, albums, globalSound}) {
 	const navigation = useNavigation();
+	const {soundPlayingNow, pauseSound, playSound} = globalSound;
+
 	return (
 
 		<SafeAreaView style={styles.container}>
@@ -18,11 +20,17 @@ export function Home({homeSounds, albums }) {
 				<View style={styles.header}>
 					<Text style={styles.title}>{homeSounds[0].author}</Text>
 				</View>
-				<TouchableOpacity style={styles.playButton}>
-					<Icon name={"play"} size={25} color={colors.white}/>
-				</TouchableOpacity>
-			
-			<SongList 
+				{soundPlayingNow ?
+					<TouchableOpacity style={styles.playButton} onPress={pauseSound}>
+						<Icon name={"pause"} size={25} color={colors.white}/>
+					</TouchableOpacity>
+				:
+					<TouchableOpacity style={styles.playButton} onPress={() => playSound()}>
+						<Icon name={"play"} size={25} color={colors.white}/>
+					</TouchableOpacity>
+				}
+
+			<SongList
 				navigation = {navigation}
 				sounds = {homeSounds}
 			/>
@@ -48,7 +56,7 @@ const styles = StyleSheet.create({
 	contentContainer: {
 		alignItems: 'center',
 		paddingBottom: 15
-		
+
 	},
 
 	header: {
@@ -59,7 +67,7 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.gray,
 
 		justifyContent: 'flex-end'
-		
+
 	},
 
 	title: {
@@ -80,7 +88,6 @@ const styles = StyleSheet.create({
 
 		alignItems:'center',
 		justifyContent: 'center'
-	}, 
+	},
 
 });
-

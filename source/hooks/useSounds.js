@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from 'react';
 
 export function useSound(soundsData) {
 
-    const [sound, setSound] = useState();
+  const [sound, setSound] = useState();
 	const [actualSoundData, setActualSoundData] = useState(soundsData[0])
 
 	const [soundPlayingNow, setSoundPlayingNow] = useState(false)
