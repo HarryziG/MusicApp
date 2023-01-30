@@ -14,7 +14,7 @@ Esse projeto é uma aplicação mobile completa, utilizando a stack **React-Nati
 
 
 ## Tecnologias
-Esse projeto foi desenvolvido utilizando como principal linguagem o **Javascript**, usando os frameworks o **React-Native**, na plataforma **Expo** e algumas libs extras, **ReactNavigation**, ****.
+Esse projeto foi desenvolvido utilizando como principal linguagem o **Javascript**, usando os frameworks o **React-Native**, na plataforma **Expo** e algumas libs extras, **ReactNavigation**.
 
 <details>
   <summary>Tecnologias detalhadas</summary>
@@ -39,7 +39,6 @@ Esse projeto foi desenvolvido utilizando como principal linguagem o **Javascript
 
 ## Abaixo seguem algumas prints de todo o projeto
 
-![](fotos_do_projeto/Screenshot_1.png)  |  ![](fotos_do_projeto/Screenshot_2.png) |  ![](fotos_do_projeto/Screenshot_3.png)  |
+![](images/Screenshot_1.png)  |  ![](images/Screenshot_2.png) |  ![](images/Screenshot_3.png)  |
 |:---------------:|:----------------:|:-----------------:|
-![](fotos_do_projeto/Screenshot_4.png)  |  ![](fotos_do_projeto/Screenshot_5.png) |  ![](fotos_do_projeto/Screenshot_6.png)  |
-
+![](images/Screenshot_4.png)  |  ![](images/Screenshot_5.png) |  ![](images/Screenshot_6.png) 
