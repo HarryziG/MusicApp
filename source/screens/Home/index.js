@@ -35,6 +35,7 @@ export function Home({homeSounds, albums, globalSound}) {
 			<SongList
 				navigation = {navigation}
 				sounds = {homeSounds}
+				playSound = {playSound}
 			/>
 
 			<AlbumList

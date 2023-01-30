@@ -4,19 +4,22 @@ import Icon from '@expo/vector-icons/Feather';
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
 
-export default function CardMusic({navigation, sound}) {
+export default function CardMusic({navigation, sound, playSound}) {
 
-  
+
 
   return(
-    <TouchableOpacity 
+    <TouchableOpacity
       style={styles.container}
-      onPress={() => {navigation.navigate("Player", {
-        selectedSound: sound
-      })}}
+      onPress={() => {
+        playSound(sound);
+        navigation.navigate("Player", {
+          selectedSound: sound
+        })
+    }}
     >
-      <Image 
-        style={styles.image} 
+      <Image
+        style={styles.image}
         source={{uri: `${sound.imageSource}`}}
       />
 
@@ -37,8 +40,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
     marginBottom: 20
-    
-  }, 
+
+  },
 
   image: {
     height: 65,

@@ -19,9 +19,6 @@ const TabsRoutes = ({homeSounds, albums, sounds, globalSound}) => {
           shadowColor: 'light' == 'light' ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.5)',
           shadowOpacity: 1,
           shadowRadius: 6,
-          borderTopEndRadius: 18,
-          borderTopStartRadius: 18
-
         },
         labelStyle: {
           fontFamily: fonts.subtitle
